@@ -1,29 +1,53 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div id="app" class="uk-container">
+    <nav id="uk-navbar-container" uk-navbar>
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/about">About</router-link></li>
+        </ul>
+      </div>
+    </nav>
     <router-view />
   </div>
 </template>
 
 <style lang="less">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "../node_modules/uikit/src/less/uikit.theme.less";
+
+html,
+body {
+  background: #009688;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+
+nav {
+  margin: 30px 0;
+  background: white;
+  li {
+    a {
+      color: #0d47a1 !important;
+
+      &:hover {
+        color: darken(#0d47a1, 40%);
+        background: rgba(0, 0, 0, 0.1);
+      }
     }
   }
 }
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
 </style>
+
+<script>
+import UIkit from "uikit";
+import Icons from "uikit/dist/js/uikit-icons";
+
+UIkit.use(Icons);
+
+export default {
+  name: "App"
+};
+</script>

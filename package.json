@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "uikit": "^3.0.0-rc.25",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1"
   },
@@ -23,18 +24,5 @@
     "less-loader": "^4.1.0",
     "lint-staged": "^7.2.2",
     "vue-template-compiler": "^2.5.17"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
   }
 }
