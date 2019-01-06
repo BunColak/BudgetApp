@@ -1,6 +1,7 @@
 <template>
   <div
     class="budget-list-item uk-card uk-card-default uk-card-body uk-card-small uk-card-hover"
+    @click="showBillDetails"
   >
     <h4 class="uk-card-title">{{ name }}</h4>
     <div class="bill-details">
@@ -46,12 +47,11 @@
 </style>
 
 <script>
-import { format, differenceInCalendarMonths } from "date-fns";
+import { format, getMonth, getDayOfYear } from "date-fns";
 
 export default {
   props: {
     id: {
-      type: Number,
       required: true
     },
     name: {
@@ -90,11 +90,23 @@ export default {
       }
     },
     willOccurThisMonth() {
+      // TODO
+      console.log(
+        this.name,
+        getDayOfYear(Date.now()) < getDayOfYear(this.startDate)
+      );
+
       return (
         this.recursIn == 1 ||
         this.recursIn == undefined ||
-        differenceInCalendarMonths(Date.now(), this.startDate) / 12 < 1
+        (getMonth(Date.now()) == getMonth(this.startDate) &&
+          getDayOfYear(Date.now()) < getDayOfYear(this.startDate))
       );
+    }
+  },
+  methods: {
+    showBillDetails() {
+      this.$router.push("/billDetails/" + this.id);
     }
   }
 };

@@ -21,8 +21,8 @@
 <style lang="less" scoped>
 .bill-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 300px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: minmax(300px, auto);
   grid-gap: 15px;
 }
 

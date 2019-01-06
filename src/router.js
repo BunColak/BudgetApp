@@ -24,6 +24,11 @@ export default new Router({
       path: "/addSubscription",
       name: "addSubscription",
       component: () => import("./views/AddSubscription.vue")
+    },
+    {
+      path: "/billDetails/:id",
+      name: "billDetails",
+      component: () => import("./views/BillDetail.vue")
     }
   ]
 });

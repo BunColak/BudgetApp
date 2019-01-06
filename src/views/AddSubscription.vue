@@ -33,6 +33,13 @@
         required
       />
 
+      <label class="uk-text-emphasis" for="date">Start Date</label>
+      <datepicker
+        input-class="uk-input"
+        id="date"
+        v-model="startDate"
+      ></datepicker>
+
       <button type="submit" class="uk-button uk-button-primary">
         Add Subsciption
       </button>
@@ -41,18 +48,40 @@
 </template>
 
 <script>
+import firebase from "../firebase.js";
+import Datepicker from "vuejs-datepicker";
+import { format } from "date-fns";
+
+const database = firebase.database();
+
 export default {
+  components: {
+    Datepicker
+  },
   data() {
     return {
       name: "",
       amount: 0,
-      recurrence: 1
+      recurrence: 1,
+      startDate: Date.now()
     };
   },
   methods: {
     addSubscibtion() {
-      // add new to firebase with data
-      console.log("Added the thing");
+      console.log();
+
+      const bill = {
+        name: this.name.trim(),
+        amount: this.amount,
+        recursIn: this.recurrence,
+        startDate: format(this.startDate, "x")
+      };
+      database
+        .ref("users/1/bills")
+        .push(bill)
+        .then(() => {
+          this.$router.push("/");
+        });
     }
   }
 };
