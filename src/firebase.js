@@ -3,12 +3,12 @@ import "firebase/database";
 
 // TODO to env variables
 const firebaseConfig = {
-  apiKey: "AIzaSyBz2C6AXcE8oHFFlfZx8_vS4T11xH7R4mc",
-  authDomain: "buncolak-86f6f.firebaseapp.com",
-  databaseURL: "https://buncolak-86f6f.firebaseio.com",
-  projectId: "buncolak-86f6f",
-  storageBucket: "buncolak-86f6f.appspot.com",
-  messagingSenderId: "466740195592"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.AUTHDOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.SENDER_ID
 };
 
 firebase.initializeApp(firebaseConfig);
